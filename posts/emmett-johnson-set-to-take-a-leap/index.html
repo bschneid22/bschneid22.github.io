@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -194,41 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>HuskerRBs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Johnson_project.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 12 Columns: 21
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (6): Name, Season, Team, Conf, Class, Pos
-dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HuskerRBs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 21
   Name   Season Team  Conf  Class Pos       G   Att RushYds RushAvg RushTD  RYPG
@@ -243,57 +174,28 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 #   RecYPG &lt;dbl&gt;, Plays &lt;dbl&gt;, APYds &lt;dbl&gt;, APAvg &lt;dbl&gt;, APTD &lt;dbl&gt;</code></pre>
 </div>
 </div>
+<p>Emmett Johnson has been impressive the last two seasons in Nebraska’s backfield. The junior running back’s journey has been intriguing during his time in Lincoln. To become an elite running back in today’s landscape of college football, the ability to run and catch are equally important.</p>
+<p>Below, will be a comparison of Johnson to three former Husker running backs from their first two seasons that had success in Lincoln:</p>
+<p>Here are the rushing statistics:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Att, RushYds, RushAvg, RushTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Emmett Johnson has had an impressive redshirt freshman and sophomore seasons in Nebraska’s backfield. The junior running back is on pace to become an elite tailback.</p>
-<p>Here is a comparison to three former Husker running backs for their first two seasons that had success in Lincoln:</p>
-<p>Starting with rushing statistics, Johnson is on track to become the elite running back that former Nebraska running backs Ameer Abdullah, Rex Burkhead and Roy Helu were.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushYds =</span> <span class="st">"Yards"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushAvg =</span> <span class="st">"Average"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushTD =</span> <span class="st">"TDs"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="st">"Athlete"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Class =</span> <span class="st">"Year"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Att =</span> <span class="st">"Attempts"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Is Emmett Johnson on pace to be in the same realm of these former Husker RBs with his rushing numbers?"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Through two seasons, the stats say yes"</span> ) <span class="sc">|&gt;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span><span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>) )  <span class="sc">|&gt;</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tab_style</span>(</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
-<div id="pgmcntqctl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pgmcntqctl table {
+<div id="chohaboxdh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#chohaboxdh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pgmcntqctl thead, #pgmcntqctl tbody, #pgmcntqctl tfoot, #pgmcntqctl tr, #pgmcntqctl td, #pgmcntqctl th {
+#chohaboxdh thead, #chohaboxdh tbody, #chohaboxdh tfoot, #chohaboxdh tr, #chohaboxdh td, #chohaboxdh th {
   border-style: none;
 }
 
-#pgmcntqctl p {
+#chohaboxdh p {
   margin: 0;
   padding: 0;
 }
 
-#pgmcntqctl .gt_table {
+#chohaboxdh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -319,12 +221,12 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-left-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_caption {
+#chohaboxdh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pgmcntqctl .gt_title {
+#chohaboxdh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -336,7 +238,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-width: 0;
 }
 
-#pgmcntqctl .gt_subtitle {
+#chohaboxdh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -348,7 +250,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-top-width: 0;
 }
 
-#pgmcntqctl .gt_heading {
+#chohaboxdh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -360,13 +262,13 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_bottom_border {
+#chohaboxdh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_col_headings {
+#chohaboxdh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -381,7 +283,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_col_heading {
+#chohaboxdh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -401,7 +303,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   overflow-x: hidden;
 }
 
-#pgmcntqctl .gt_column_spanner_outer {
+#chohaboxdh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -413,15 +315,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 4px;
 }
 
-#pgmcntqctl .gt_column_spanner_outer:first-child {
+#chohaboxdh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pgmcntqctl .gt_column_spanner_outer:last-child {
+#chohaboxdh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pgmcntqctl .gt_column_spanner {
+#chohaboxdh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -433,11 +335,11 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   width: 100%;
 }
 
-#pgmcntqctl .gt_spanner_row {
+#chohaboxdh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pgmcntqctl .gt_group_heading {
+#chohaboxdh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -463,7 +365,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   text-align: left;
 }
 
-#pgmcntqctl .gt_empty_group_heading {
+#chohaboxdh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -478,15 +380,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   vertical-align: middle;
 }
 
-#pgmcntqctl .gt_from_md > :first-child {
+#chohaboxdh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pgmcntqctl .gt_from_md > :last-child {
+#chohaboxdh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pgmcntqctl .gt_row {
+#chohaboxdh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -505,7 +407,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   overflow-x: hidden;
 }
 
-#pgmcntqctl .gt_stub {
+#chohaboxdh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -518,7 +420,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#pgmcntqctl .gt_stub_row_group {
+#chohaboxdh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -532,15 +434,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   vertical-align: top;
 }
 
-#pgmcntqctl .gt_row_group_first td {
+#chohaboxdh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pgmcntqctl .gt_row_group_first th {
+#chohaboxdh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pgmcntqctl .gt_summary_row {
+#chohaboxdh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -550,16 +452,16 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#pgmcntqctl .gt_first_summary_row {
+#chohaboxdh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_first_summary_row.thick {
+#chohaboxdh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pgmcntqctl .gt_last_summary_row {
+#chohaboxdh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -569,7 +471,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_grand_summary_row {
+#chohaboxdh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -579,7 +481,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#pgmcntqctl .gt_first_grand_summary_row {
+#chohaboxdh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -589,7 +491,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-top-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_last_grand_summary_row_top {
+#chohaboxdh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -599,11 +501,11 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_striped {
+#chohaboxdh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pgmcntqctl .gt_table_body {
+#chohaboxdh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -612,7 +514,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_footnotes {
+#chohaboxdh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -626,7 +528,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_footnote {
+#chohaboxdh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -635,7 +537,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#pgmcntqctl .gt_sourcenotes {
+#chohaboxdh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -649,7 +551,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#pgmcntqctl .gt_sourcenote {
+#chohaboxdh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -657,72 +559,72 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#pgmcntqctl .gt_left {
+#chohaboxdh .gt_left {
   text-align: left;
 }
 
-#pgmcntqctl .gt_center {
+#chohaboxdh .gt_center {
   text-align: center;
 }
 
-#pgmcntqctl .gt_right {
+#chohaboxdh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pgmcntqctl .gt_font_normal {
+#chohaboxdh .gt_font_normal {
   font-weight: normal;
 }
 
-#pgmcntqctl .gt_font_bold {
+#chohaboxdh .gt_font_bold {
   font-weight: bold;
 }
 
-#pgmcntqctl .gt_font_italic {
+#chohaboxdh .gt_font_italic {
   font-style: italic;
 }
 
-#pgmcntqctl .gt_super {
+#chohaboxdh .gt_super {
   font-size: 65%;
 }
 
-#pgmcntqctl .gt_footnote_marks {
+#chohaboxdh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pgmcntqctl .gt_asterisk {
+#chohaboxdh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pgmcntqctl .gt_indent_1 {
+#chohaboxdh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pgmcntqctl .gt_indent_2 {
+#chohaboxdh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pgmcntqctl .gt_indent_3 {
+#chohaboxdh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pgmcntqctl .gt_indent_4 {
+#chohaboxdh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pgmcntqctl .gt_indent_5 {
+#chohaboxdh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pgmcntqctl .katex-display {
+#chohaboxdh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pgmcntqctl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#chohaboxdh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -847,18 +749,9 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 </div>
 </div>
 </div>
+<p>It’s clear that Johnson is on the right pace through to seasons. The 4.9 average yards-per-carry is right with Abdullah and Burkhead. Helu had a 5.9 average, but his amount of carries were significantly less than Abdullah, Burkhead and Johnson.</p>
+<p>Moreover, Johnson’s rushing touchdowns were less than each of the three running backs he’s compared to, yet Nebraska’s offense as a whole was less productive during Johnson’s two seasons getting carries.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Rec_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Rec, RecYds, RecAvg, RecTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rec_Stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   Class Name       Rec RecYds RecAvg RecTD
@@ -871,61 +764,22 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 6 Total Burkhead    28    238    8.5     1</code></pre>
 </div>
 </div>
+<p>The receiving numbers sets Johnson apart. Here are the receiving statistics for Johnson, Burkhead, Abdullah and Helu through two seasons:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">data=</span>Rec_Stats, <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_text_repel</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Rec_Stats, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds, <span class="at">label=</span>Name))<span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Receptions"</span>, <span class="at">y =</span> <span class="st">"Receiving Yards"</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Johnson's got it won when it comes to catching the ball out of the backfield"</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Imagine the numbers Johnson could put up with a whole year of Holgorsen's savvy scheme"</span>,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Johnson’s redshirt freshman season he only had 46 receiving yards, but looking at his</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>AP_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, APYds, APAvg,APTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>AP_Stats, <span class="fu">aes</span>(<span class="at">x=</span> Name, <span class="at">weight=</span>APYds, <span class="at">fill=</span><span class="st">"Type"</span>)) <span class="sc">+</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Player"</span>, <span class="at">y =</span> <span class="st">"All-Purpose Yards"</span>,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Johnson's all-purpose yards compared to these three through two seasons"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"He's a little behind Burkhead and Abdullah, but he's on the right trajectory"</span>,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
