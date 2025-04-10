@@ -201,29 +201,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'dplyr' was built under R version 4.4.3</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>HuskerRBs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Johnson_project.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>HuskerRBs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Johnson_project.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 12 Columns: 21
@@ -239,7 +227,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HuskerRBs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HuskerRBs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 21
@@ -258,51 +246,54 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Att, RushYds, RushAvg, RushTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Att, RushYds, RushAvg, RushTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Emmett Johnson has had an impressive redshirt freshman and sophomore seasons in Nebraska’s backfield. The junior running back is on pace to become an elite tailback.</p>
+<p>Here is a comparison to three former Husker running backs for their first two seasons that had success in Lincoln:</p>
+<p>Starting with rushing statistics, Johnson is on track to become the elite running back that former Nebraska running backs Ameer Abdullah, Rex Burkhead and Roy Helu were.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushYds =</span> <span class="st">"Rushing Yards"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushAvg =</span> <span class="st">"Average YPC"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushTD =</span> <span class="st">"Rushing TDs"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="st">"Athlete"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Class =</span> <span class="st">"Year"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Att =</span> <span class="st">"Rush Attempts"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Is Emmett Johnson on pace to be in the same realm of these former Husker RBs?"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Through two seasons, the stats say yes"</span> ) <span class="sc">|&gt;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span><span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>) )  <span class="sc">|&gt;</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tab_style</span>(</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushYds =</span> <span class="st">"Yards"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushAvg =</span> <span class="st">"Average"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushTD =</span> <span class="st">"TDs"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="st">"Athlete"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Class =</span> <span class="st">"Year"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Att =</span> <span class="st">"Attempts"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Is Emmett Johnson on pace to be in the same realm of these former Husker RBs with his rushing numbers?"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Through two seasons, the stats say yes"</span> ) <span class="sc">|&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span><span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>) )  <span class="sc">|&gt;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tab_style</span>(</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="ezduniiwbk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ezduniiwbk table {
+<div id="pgmcntqctl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pgmcntqctl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ezduniiwbk thead, #ezduniiwbk tbody, #ezduniiwbk tfoot, #ezduniiwbk tr, #ezduniiwbk td, #ezduniiwbk th {
+#pgmcntqctl thead, #pgmcntqctl tbody, #pgmcntqctl tfoot, #pgmcntqctl tr, #pgmcntqctl td, #pgmcntqctl th {
   border-style: none;
 }
 
-#ezduniiwbk p {
+#pgmcntqctl p {
   margin: 0;
   padding: 0;
 }
 
-#ezduniiwbk .gt_table {
+#pgmcntqctl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -328,12 +319,12 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-left-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_caption {
+#pgmcntqctl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ezduniiwbk .gt_title {
+#pgmcntqctl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -345,7 +336,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-width: 0;
 }
 
-#ezduniiwbk .gt_subtitle {
+#pgmcntqctl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -357,7 +348,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-top-width: 0;
 }
 
-#ezduniiwbk .gt_heading {
+#pgmcntqctl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -369,13 +360,13 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_bottom_border {
+#pgmcntqctl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_col_headings {
+#pgmcntqctl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -390,7 +381,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_col_heading {
+#pgmcntqctl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -410,7 +401,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   overflow-x: hidden;
 }
 
-#ezduniiwbk .gt_column_spanner_outer {
+#pgmcntqctl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -422,15 +413,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 4px;
 }
 
-#ezduniiwbk .gt_column_spanner_outer:first-child {
+#pgmcntqctl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ezduniiwbk .gt_column_spanner_outer:last-child {
+#pgmcntqctl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ezduniiwbk .gt_column_spanner {
+#pgmcntqctl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -442,11 +433,11 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   width: 100%;
 }
 
-#ezduniiwbk .gt_spanner_row {
+#pgmcntqctl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ezduniiwbk .gt_group_heading {
+#pgmcntqctl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -472,7 +463,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   text-align: left;
 }
 
-#ezduniiwbk .gt_empty_group_heading {
+#pgmcntqctl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -487,15 +478,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   vertical-align: middle;
 }
 
-#ezduniiwbk .gt_from_md > :first-child {
+#pgmcntqctl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ezduniiwbk .gt_from_md > :last-child {
+#pgmcntqctl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ezduniiwbk .gt_row {
+#pgmcntqctl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -514,7 +505,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   overflow-x: hidden;
 }
 
-#ezduniiwbk .gt_stub {
+#pgmcntqctl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -527,7 +518,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#ezduniiwbk .gt_stub_row_group {
+#pgmcntqctl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -541,15 +532,15 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   vertical-align: top;
 }
 
-#ezduniiwbk .gt_row_group_first td {
+#pgmcntqctl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ezduniiwbk .gt_row_group_first th {
+#pgmcntqctl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ezduniiwbk .gt_summary_row {
+#pgmcntqctl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -559,16 +550,16 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#ezduniiwbk .gt_first_summary_row {
+#pgmcntqctl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_first_summary_row.thick {
+#pgmcntqctl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ezduniiwbk .gt_last_summary_row {
+#pgmcntqctl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -578,7 +569,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_grand_summary_row {
+#pgmcntqctl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -588,7 +579,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#ezduniiwbk .gt_first_grand_summary_row {
+#pgmcntqctl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -598,7 +589,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-top-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_last_grand_summary_row_top {
+#pgmcntqctl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -608,11 +599,11 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_striped {
+#pgmcntqctl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ezduniiwbk .gt_table_body {
+#pgmcntqctl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -621,7 +612,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-bottom-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_footnotes {
+#pgmcntqctl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -635,7 +626,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_footnote {
+#pgmcntqctl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -644,7 +635,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#ezduniiwbk .gt_sourcenotes {
+#pgmcntqctl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -658,7 +649,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   border-right-color: #D3D3D3;
 }
 
-#ezduniiwbk .gt_sourcenote {
+#pgmcntqctl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -666,72 +657,72 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
   padding-right: 5px;
 }
 
-#ezduniiwbk .gt_left {
+#pgmcntqctl .gt_left {
   text-align: left;
 }
 
-#ezduniiwbk .gt_center {
+#pgmcntqctl .gt_center {
   text-align: center;
 }
 
-#ezduniiwbk .gt_right {
+#pgmcntqctl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ezduniiwbk .gt_font_normal {
+#pgmcntqctl .gt_font_normal {
   font-weight: normal;
 }
 
-#ezduniiwbk .gt_font_bold {
+#pgmcntqctl .gt_font_bold {
   font-weight: bold;
 }
 
-#ezduniiwbk .gt_font_italic {
+#pgmcntqctl .gt_font_italic {
   font-style: italic;
 }
 
-#ezduniiwbk .gt_super {
+#pgmcntqctl .gt_super {
   font-size: 65%;
 }
 
-#ezduniiwbk .gt_footnote_marks {
+#pgmcntqctl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ezduniiwbk .gt_asterisk {
+#pgmcntqctl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ezduniiwbk .gt_indent_1 {
+#pgmcntqctl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ezduniiwbk .gt_indent_2 {
+#pgmcntqctl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ezduniiwbk .gt_indent_3 {
+#pgmcntqctl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ezduniiwbk .gt_indent_4 {
+#pgmcntqctl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ezduniiwbk .gt_indent_5 {
+#pgmcntqctl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ezduniiwbk .katex-display {
+#pgmcntqctl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ezduniiwbk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pgmcntqctl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -739,7 +730,7 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<th colspan="6" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Is Emmett Johnson on pace to be in the same realm of these former Husker RBs?</th>
+<th colspan="6" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Is Emmett Johnson on pace to be in the same realm of these former Husker RBs with his rushing numbers?</th>
 </tr>
 <tr class="gt_heading even">
 <th colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #FF0000;">Through two seasons, the stats say yes</th>
@@ -747,10 +738,10 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <tr class="gt_col_headings header">
 <th id="Class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Year</th>
 <th id="Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Athlete</th>
-<th id="Att" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rush Attempts</th>
-<th id="RushYds" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rushing Yards</th>
-<th id="RushAvg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Average YPC</th>
-<th id="RushTD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rushing TDs</th>
+<th id="Att" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Attempts</th>
+<th id="RushYds" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Yards</th>
+<th id="RushAvg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Average</th>
+<th id="RushTD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">TDs</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -859,14 +850,14 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Rec_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Rec, RecYds, RecAvg, RecTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Rec_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, Rec, RecYds, RecAvg, RecTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rec_Stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rec_Stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
@@ -883,18 +874,24 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">data=</span>Rec_Stats, <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_text_repel</span>(</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Rec_Stats, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds, <span class="at">label=</span>Name))<span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">data=</span>Rec_Stats, <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_text_repel</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Rec_Stats, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds, <span class="at">label=</span>Name))<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Receptions"</span>, <span class="at">y =</span> <span class="st">"Receiving Yards"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Johnson's got it won when it comes to catching the ball out of the backfield"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Imagine the numbers Johnson could put up with a whole year of Holgorsen's savvy scheme"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -907,16 +904,23 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>AP_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, APYds, APAvg,APTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>AP_Stats <span class="ot">&lt;-</span> HuskerRBs <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Class, Name, APYds, APAvg,APTD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>AP_Stats, <span class="fu">aes</span>(<span class="at">x=</span> Name, <span class="at">weight=</span>APYds, <span class="at">fill=</span><span class="st">"red"</span>)) <span class="sc">+</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>AP_Stats, <span class="fu">aes</span>(<span class="at">x=</span> Name, <span class="at">weight=</span>APYds, <span class="at">fill=</span><span class="st">"Type"</span>)) <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Player"</span>, <span class="at">y =</span> <span class="st">"All-Purpose Yards"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Johnson's all-purpose yards compared to these three through two seasons"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"He's a little behind Burkhead and Abdullah, but he's on the right trajectory"</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -926,9 +930,6 @@ dbl (15): G, Att, RushYds, RushAvg, RushTD, RYPG, Rec, RecYds, RecAvg, RecTD...
 </div>
 </div>
 </div>
-<p>Emmett Johnson has had an impressive redshirt freshman and sophomore seasons in Nebraska’s backfield. The junior running back is on pace to become an elite tailback.</p>
-<p>Here is a comparison to three former Husker running backs for their first two seasons that had success in Lincoln:</p>
-<p>Starting with rushing statistics, Johnson’s the guy</p>
 
 
 
