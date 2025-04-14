@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -160,27 +194,54 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Emmett Johnson has been impressive through two seasons in Nebraska’s backfield. The junior running back’s journey has been intriguing during his time in Lincoln. To become an elite running back in today’s landscape of college football, the ability to run and catch is as important as ever.</p>
-<p>Below will be a comparison of Johnson to three former Husker running backs [Ameer Abdullah, Rex Burkhead and Roy Helu] with their statistics through their first two seasons in Lincoln.</p>
-<p>Here are the rushing numbers:</p>
+<p>Below will be a comparison of Johnson to three former Husker running backs [Ameer Abdullah, Rex Burkhead and Roy Helu] with their statistics through their first two seasons in Lincoln. The data was gathered from sports-reference.com. The file was edited to only compare the first two seasons for each running back.</p>
+<p>Let’s start with the main statistic, rushing:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Rush_Stats <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushYds =</span> <span class="st">"Yards"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushAvg =</span> <span class="st">"Average"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">RushTD =</span> <span class="st">"TDs"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="st">"Athlete"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Class =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Att =</span> <span class="st">"Attempts"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(RushYds, Att),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">0</span>,   </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_seps =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Is Emmett Johnson on pace to be in the same realm of these former Husker RBs with his rushing numbers?"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Through two seasons, the stats say yes"</span> ) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note=</span><span class="fu">md</span>(<span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span><span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>) )  <span class="sc">|&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tab_style</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
-<div id="akytagfrqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#akytagfrqa table {
+<div id="donvocncjc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#donvocncjc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#akytagfrqa thead, #akytagfrqa tbody, #akytagfrqa tfoot, #akytagfrqa tr, #akytagfrqa td, #akytagfrqa th {
+#donvocncjc thead, #donvocncjc tbody, #donvocncjc tfoot, #donvocncjc tr, #donvocncjc td, #donvocncjc th {
   border-style: none;
 }
 
-#akytagfrqa p {
+#donvocncjc p {
   margin: 0;
   padding: 0;
 }
 
-#akytagfrqa .gt_table {
+#donvocncjc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -206,12 +267,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_caption {
+#donvocncjc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#akytagfrqa .gt_title {
+#donvocncjc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -223,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#akytagfrqa .gt_subtitle {
+#donvocncjc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -235,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#akytagfrqa .gt_heading {
+#donvocncjc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -247,13 +308,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_bottom_border {
+#donvocncjc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_col_headings {
+#donvocncjc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -268,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_col_heading {
+#donvocncjc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -288,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#akytagfrqa .gt_column_spanner_outer {
+#donvocncjc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -300,15 +361,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#akytagfrqa .gt_column_spanner_outer:first-child {
+#donvocncjc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#akytagfrqa .gt_column_spanner_outer:last-child {
+#donvocncjc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#akytagfrqa .gt_column_spanner {
+#donvocncjc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -320,11 +381,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#akytagfrqa .gt_spanner_row {
+#donvocncjc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#akytagfrqa .gt_group_heading {
+#donvocncjc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -350,7 +411,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#akytagfrqa .gt_empty_group_heading {
+#donvocncjc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -365,15 +426,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#akytagfrqa .gt_from_md > :first-child {
+#donvocncjc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#akytagfrqa .gt_from_md > :last-child {
+#donvocncjc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#akytagfrqa .gt_row {
+#donvocncjc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -392,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#akytagfrqa .gt_stub {
+#donvocncjc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -405,7 +466,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#akytagfrqa .gt_stub_row_group {
+#donvocncjc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,15 +480,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#akytagfrqa .gt_row_group_first td {
+#donvocncjc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#akytagfrqa .gt_row_group_first th {
+#donvocncjc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#akytagfrqa .gt_summary_row {
+#donvocncjc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -437,16 +498,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#akytagfrqa .gt_first_summary_row {
+#donvocncjc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_first_summary_row.thick {
+#donvocncjc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#akytagfrqa .gt_last_summary_row {
+#donvocncjc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -456,7 +517,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_grand_summary_row {
+#donvocncjc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -466,7 +527,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#akytagfrqa .gt_first_grand_summary_row {
+#donvocncjc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -476,7 +537,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_last_grand_summary_row_top {
+#donvocncjc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -486,11 +547,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_striped {
+#donvocncjc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#akytagfrqa .gt_table_body {
+#donvocncjc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -499,7 +560,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_footnotes {
+#donvocncjc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -513,7 +574,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_footnote {
+#donvocncjc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -522,7 +583,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#akytagfrqa .gt_sourcenotes {
+#donvocncjc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -536,7 +597,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#akytagfrqa .gt_sourcenote {
+#donvocncjc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -544,72 +605,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#akytagfrqa .gt_left {
+#donvocncjc .gt_left {
   text-align: left;
 }
 
-#akytagfrqa .gt_center {
+#donvocncjc .gt_center {
   text-align: center;
 }
 
-#akytagfrqa .gt_right {
+#donvocncjc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#akytagfrqa .gt_font_normal {
+#donvocncjc .gt_font_normal {
   font-weight: normal;
 }
 
-#akytagfrqa .gt_font_bold {
+#donvocncjc .gt_font_bold {
   font-weight: bold;
 }
 
-#akytagfrqa .gt_font_italic {
+#donvocncjc .gt_font_italic {
   font-style: italic;
 }
 
-#akytagfrqa .gt_super {
+#donvocncjc .gt_super {
   font-size: 65%;
 }
 
-#akytagfrqa .gt_footnote_marks {
+#donvocncjc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#akytagfrqa .gt_asterisk {
+#donvocncjc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#akytagfrqa .gt_indent_1 {
+#donvocncjc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#akytagfrqa .gt_indent_2 {
+#donvocncjc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#akytagfrqa .gt_indent_3 {
+#donvocncjc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#akytagfrqa .gt_indent_4 {
+#donvocncjc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#akytagfrqa .gt_indent_5 {
+#donvocncjc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#akytagfrqa .katex-display {
+#donvocncjc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#akytagfrqa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#donvocncjc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -744,6 +805,25 @@ ul.task-list li input[type="checkbox"] {
 <p>Moreover, Johnson’s rushing touchdowns were less than each of the three running backs he’s compared to, yet Nebraska’s offense as a whole was less productive during Johnson’s two seasons getting carries.</p>
 <p>The receiving numbers set Johnson apart. Here are the receiving statistics for Johnson, Burkhead, Abdullah and Helu through two seasons:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">data=</span>Rec_Stats, <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_text_repel</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Rec_Stats, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Rec, <span class="at">y=</span>RecYds, <span class="at">label=</span>Name))<span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Receptions"</span>, <span class="at">y =</span> <span class="st">"Receiving Yards"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Johnson's got it won when it comes to catching the ball out of the backfield"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Imagine the numbers Johnson could put up with a whole year of Holgorsen's savvy scheme"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -753,10 +833,29 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>Johnson’s redshirt freshman season he only had 46 receiving yards, but looking at his sophomore campaign, he tore it apart. Johnson jumped his receiving yardage to 286 as a sophomore wearing the scarlet and cream.</p>
-<p>The top two red dots in the upper right corner show the jump that Johnson made in his second season. He had the best of the three in total receiving yards out of the backfield with 332 yards racked up through the air.</p>
+<p>The top two red dots (the one at the very top, shows the total through two seasons) in the upper right corner, makes the jump that Johnson made in his second season stand out. He had the best of the three in total receiving yards and receptions out of the backfield with 332 yards racked up through the air. Johnson’s ability to be a jack of all trades could help him continue to be just as, if not more productive for the next two seasons.</p>
 <p>So, how does Johnson’s rushing and receiving put together compare?</p>
 <p>Here are the all-purpose yards produced for each of the four running backs:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>AP_Stats, <span class="fu">aes</span>(<span class="at">x=</span> Name, <span class="at">weight=</span>APYds, <span class="at">fill=</span><span class="st">"All-Purpose Yardage"</span>)) <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Player"</span>, <span class="at">y =</span> <span class="st">"All-Purpose Yards"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Capping it off with the all-purpose yardage"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"He's a little behind Burkhead and Abdullah, yet he's on trending towards them"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -765,8 +864,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Johnson’s a little behind Abdullah and Burkhead through two years but is above Helu for all-purpose yardage, but he’s on the right road. In conclusion, Johnson is within spitting distance in some categories, and some ahead.</p>
-<p>Overall, the junior Husker running back should be set to have quite the breakthrough junior season in Nebraska’s backfield. It will be intriguing to compare Johnson to these three after his junior season. The rushing yardage might not reach the other three, but the all-purpose very well could, with Johnson’s ability to catch the ball out of the backfield.</p>
+<p>Johnson’s behind Abdullah and Burkhead through two years in terms of all-purpose yardage, but is above Helu. Johnson is on the right road. He is within spitting distance in some categories, and some ahead.</p>
+<p>The main purpose wasn’t to say Johnson is a better back, it was to prove that he has the potential to have a similar amount of production that these three backs had during their Husker football careers.</p>
+<p>The rushing yardage might not reach the other three, but the all-purpose yards very well could with Johnson’s ability to catch the ball out of the backfield, especially with offensive coordinator Dana Holgorsen in command.</p>
+<p>Overall, the junior Husker running back should be set to have quite the breakthrough junior season in Nebraska’s backfield. It will be intriguing to compare Johnson to these three after his junior season.</p>
 
 
 
