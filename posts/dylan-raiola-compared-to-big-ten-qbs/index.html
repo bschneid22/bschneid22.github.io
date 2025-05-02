@@ -191,9 +191,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Dylan Raiola showed sparks of eliteness as a true freshman in Lincoln, but he also had his fair share of rookie moments. As he enters his sophomore season, the expectations for Nebraska football with him under center continue to grow.</p>
-<p>Could Raiola make the jump to become elite as a Big Ten QB? You’ll find he did pretty solid, especially compared to quarterbacks that had been starters before Raiola even stepped foot on a college campus.</p>
-<p>Below, we will compare Raiola to four quarterbacks who were starters the past season in the Big Ten. The only expectation — former Tennessee, now UCLA quarterback Nico Iamaleava. The others include Penn State’s Drew Allar, Illinois’ Luke Altmyer and USC’s Jayden Maiava.</p>
+<p>Dylan Raiola showed sparks of eliteness as a true freshman in Lincoln, but he also had his fair share of rookie moments. As he enters his sophomore season, the expectations for Nebraska football with him under center continue to grow. Could Raiola make the jump to become elite as a Big Ten quarterback? You’ll find he did pretty solid, especially compared to quarterbacks who had been starters before Raiola even stepped foot on a college campus.</p>
+<p>We will compare Raiola to four quarterbacks who were starters the past season in the Big Ten. The only exception — former Tennessee, now UCLA quarterback Nico Iamaleava. The others include Penn State’s Drew Allar, Illinois’ Luke Altmyer and USC’s Jayden Maiava.</p>
+<p>Starting with raw production in simple terms for a quarterback — passing yards:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -217,6 +217,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>As seen above, Raiola did pretty solid. He set the Nebraska freshman single-season passing yards record with his 2,819 yards through the air. Remember, he was a freshman. The rest had been a starter for at least one season prior.</p>
+<p>Altmyer, Allar were in their fourth year of college. Iamaleava was in his second season and Maiava had been a starter at UNLV the year prior. Although Raiola threw it the most, it’s stellar that the freshman quarterback achieved that high of a mark.</p>
+<p>What is something that Raiola might be No.1 in? There wasn’t much, yet a very critical statistic he leads the way — and that being:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -251,6 +254,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>It’s extremely impressive that Raiola had the most passing attempts among these QBs. He obtained the highest completion percentage — savvy for a true freshman in the Big Ten.</p>
+<p>For Raiola to put up that high of completion percentage, with a lackluster receiving corps. The Huskers’ receiving leader was Jahmal Banks, who only racked up 587 yards. It’s impressive how Raiola found as many completions as he did.</p>
+<p>Now, this one gets ugly. The touchdown-to-interception ratio is not ideal for Raiola, especially compared to the other four:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -277,17 +283,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Raiola’s ratio is the worst among the group, but it is noteworthy that one came on the last play of the game at USC — on a controversial no-call on a pass interference from the Trojan defense. Two others came from defenders ripping the ball from Nebraska receivers’ hands — one from Jaylen Lloyd against Northern Iowa and the other from Isaiah Neyor against Illinois.</p>
+<p>This still doesn’t give Raiola a free pass on the interceptions. He had his fair share of mishaps through the air. He threw three alone at Indiana and two crucial ones to end the games at Ohio State and Iowa.</p>
+<p>Finally, there’s one more visualization that is intriguing.</p>
+<p>Here is a look at passing yards per game, along with yards per completion:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> Raiola_B1G_QBs, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Y.G, <span class="at">y =</span> QBR), <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Y.G, <span class="at">y =</span> Y.C), <span class="at">color =</span> <span class="st">"black"</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> Raiola_B1G_QBs, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Y.G, <span class="at">y =</span> QBR, <span class="at">label =</span> Name, <span class="at">color =</span> Name), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Y.G, <span class="at">y =</span> Y.C, <span class="at">label =</span> Name, <span class="at">color =</span> Name), </span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
@@ -301,9 +311,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Passing Yards Per Game"</span>, </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"QBR"</span>,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Passing yards per game, along with QBR"</span>, </span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"It's clear that the interceptions hurt Raiola's rating"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Passing Yards Per Completion"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Let's finish it will one more visual"</span>, </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Passing YPG Raiola takes it, but the YPC needs improvement"</span>,</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Bobby Schneider | Source: sportsreference.com"</span></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -316,6 +326,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Raiola’s passing yards per game came in first, but his yards per completion came in dead last. It doesn’t help that former Nebraska offensive coordinator Marcus Satterfield had Raiola throwing a significant amount of bubble screens until Dana Holgorsen took over after the Huskers lost to UCLA.</p>
+<p>That might be an excuse for Raiola, but his deep ball talents didn’t necessarily translate throughout the season. Was it the lack of talent in the Nebraska receiving room? That question will be answered come fall. Raiola has quite the talent in his receivers heading into the season. Kentucky transfer Dane Key, Cal transfer Nyziah Hunter and Jacory Barney Jr.&nbsp;look to lead the way.</p>
+<p>The talent is there for Raiola to put up video game numbers in 2025, but it’s clear that there’s strong room for improvement in some categories. At the same time, Raiola was savvy as a freshman. He beat out the top Big Ten quarterbacks in important categories with significant starting experience — and all had at least one year of college football under their belt before Raiola.</p>
+<p>Only time will tell, but Raiola could have quite the season for the Big Red.</p>
 
 
 
